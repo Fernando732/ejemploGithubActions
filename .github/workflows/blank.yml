@@ -1,0 +1,36 @@
+# .github/workflows/nodejs.yml
+name: Node.js CI on Windows with ESLint
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: windows-latest  # Esto se ejecutará en Windows
+
+    strategy:
+      matrix:
+        node-version: [20.x]  # Especifica la versión Node.j
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Instalar dependencias
+      run: npm install
+
+    - name: Ejecutar ESLint para calidad del codigo
+      run: npx eslint .  # Ejecuta ESLint en el proyecto
+
+    - name: Run tests
+      run: npm test
