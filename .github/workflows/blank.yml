@@ -1,5 +1,5 @@
 # .github/workflows/nodejs.yml
-name: Node.js
+name: Flujo de trabajo Node.js
 
 on:
   push:
