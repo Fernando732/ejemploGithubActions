@@ -1,5 +1,5 @@
 # .github/workflows/nodejs.yml
-name: Node.js CI on Windows with ESLint
+name: Node.js
 
 on:
   push:
