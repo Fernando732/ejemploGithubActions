@@ -9,7 +9,7 @@ export default [
       sourceType: "commonjs",
       globals: { 
         ...globals.browser,
-        process: "readonly" // Agrega 'process' como variable global de solo lectura
+        process: "readonly"
       }
     },
     rules: {
