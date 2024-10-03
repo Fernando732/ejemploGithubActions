@@ -3,7 +3,7 @@ const assert = require('assert');
 
 try {
     assert.strictEqual(sum(2, 3), 5);
-    console.log('Pasaron las pruebas de la funcion');
+    console.log("Pasaron las pruebas de la funcion");
 } catch (e) {
     console.error('fallo la prueba', e.message);
     process.exit(1);
