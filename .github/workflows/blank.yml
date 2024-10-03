@@ -1,6 +1,7 @@
 # .github/workflows/nodejs.yml
 name: Flujo de trabajo Node.js
 
+#Eventos para que se ejecute el flujo de trabajo
 on:
   push:
     branches:
@@ -13,24 +14,31 @@ jobs:
   build:
     runs-on: windows-latest  # Esto se ejecutará en Windows
 
+#Especifica que el flujo usará la versión 20.x de Node.js para ejecutar las acciones.
     strategy:
       matrix:
-        node-version: [20.x]  # Especifica la versión Node.j
+        node-version: [20.x]
 
     steps:
+    #clonar el repositorio en el entorno de ejecución y poder trabajar con los archivos del proyecto.
     - name: Checkout repository
       uses: actions/checkout@v3
 
+#configura el entorno de Node.js con la versión especificada en la matriz 
     - name: Setup Node.js
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
 
+#instala todas las dependencias necesarias que están definidas en el archivo package.json.
     - name: Instalar dependencias
       run: npm install
 
+#analiza el código del proyecto y asegurar que cumple con los estándares de calidad de código
     - name: Ejecutar ESLint para calidad del codigo
-      run: npx eslint .  # Ejecuta ESLint en el proyecto
+      run: npx eslint . 
 
-    - name: Run tests
+#Esto asegura que el código actual no rompe ninguna funcionalidad existente 
+# y que todas las pruebas pasan correctamente.
+    - name: Ejecutar test
       run: npm test
