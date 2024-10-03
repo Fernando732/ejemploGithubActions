@@ -13,7 +13,7 @@ export default [
       }
     },
     rules: {
-      "indent": ["error", 4], // Indentación de 2 espacios
+      "indent": ["error", 4], // Indentación
       "quotes": ["error", "single"], // Comillas simples
       "semi": ["error", "always"], // Punto y coma obligatorio
     },
